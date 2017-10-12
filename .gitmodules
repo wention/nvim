@@ -1,0 +1,4 @@
+[submodule "dein.vim"]
+	path = dein/repos/github.com/Shougo/dein.vim
+	url = https://github.com/Shougo/dein.vim.git
+	branch = master 
