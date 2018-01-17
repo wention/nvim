@@ -111,7 +111,7 @@
                         \ })
 
         call dein#add('easymotion/vim-easymotion')
-        call dein#add('myusuf3/numbers.vim')
+        "call dein#add('myusuf3/numbers.vim')
     " }
 
     " Common Code {
