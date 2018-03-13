@@ -143,7 +143,7 @@
 
         call dein#add('kristijanhusak/vim-multiple-cursors')
         call dein#add('junegunn/vim-easy-align')
-        call dein#add('matchit.zip')
+        call dein#add('vim-scripts/matchit.zip')
         call dein#add('mhinz/vim-startify')
         call dein#add('scrooloose/nerdcommenter')
         call dein#add('mileszs/ack.vim', {
