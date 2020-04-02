@@ -59,7 +59,8 @@
 " Plugins {
     set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
 
-    call dein#begin(expand('~/.config/nvim/dein')) " plugins' root path
+    if dein#load_state('~/.cache/dein')
+        call dein#begin(expand('~/.config/nvim/dein')) " plugins' root path
 
     " General {
         call dein#add('Shougo/dein.vim')
@@ -67,12 +68,12 @@
                         \ 'build': 'make',
                         \ })
 
+        " vim-plug like install UI
+        " Usage: :DeinUpdate
+        call dein#add('wsdjeg/dein-ui.vim')
+
         call dein#add('Shougo/context_filetype.vim')
-
-        call dein#add('iequalsraf/neovim-gui-shim')
-
         call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
-
         call dein#add('scrooloose/nerdtree', {
                         \ 'depends': ['vim-nerdtree-syntax-highlight'],
                         \ 'on_cmd': ['NERDTreeToggle', 'NERDTreeFind'],
@@ -123,9 +124,18 @@
                         \ })
 
         call dein#add('tpope/vim-fugitive')
+
+		"call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
+        "call dein#add('liuchengxu/vista.vim', {
+                        "\ 'on_cmd': [ 'Vista!!'],
+                        "\ 'hook_add': 'nnoremap <leader>t :Vista!!<CR>',
+                        "\ 'hook_source': 'source ~/.config/nvim/rc/plugins/vista.vim',
+                        "\ })
+
         call dein#add('majutsushi/tagbar', {
                         \ 'on_cmd': [ 'TagbarToggle', 'TagbarOpen'],
-                        \ 'hook_add': 'nnoremap <leader>t :TagbarToggle<CR>'
+                        \ 'hook_add': 'nnoremap <leader>t :TagbarToggle<CR>',
+                        \ 'hook_source': 'source ~/.config/nvim/rc/plugins/tagbar.vim',
                         \ })
 
         call dein#add('Shougo/neosnippet-snippets')
@@ -137,9 +147,9 @@
                         \ })
 
         call dein#add('Shougo/deoplete.nvim', {
-                        \ 'depends': 'context_filetype.vim',
+                        \ 'depends': ['neosnippet-snippets', 'context_filetype.vim'],
                         \ 'if': 'has("nvim")',
-                        \ 'on_event': 'InsertEnter',
+                        \ 'on_event': 'InsertCharPre',
                         \ 'hook_source': 'source ~/.config/nvim/rc/plugins/deoplete.vim',
                         \ })
 
@@ -152,10 +162,18 @@
                         \ 'on_cmd': ['Ack'],
                         \ })
 
+        " #######################################################
+        " More filetype support
+        "
         " for python
         call dein#add('zchee/deoplete-jedi', {
                         \ 'depends': 'deoplete.nvim',
                         \ 'on_ft': 'python',
+                        \ })
+
+        "call dein#add('lepture/vim-jinja')
+        call dein#add('lepture/vim-jinja', {
+                        \ 'on_ft': 'jinjia',
                         \ })
 
         " for c/c++
@@ -184,17 +202,19 @@
     " }
 
 
-    if dein#tap('deoplete.nvim') && has('nvim')
-        call dein#disable('neocomplete.vim')
-    endif
-    call dein#disable('neobundle.vim')
-    call dein#disable('neopairs.vim')
+        if dein#tap('deoplete.nvim') && has('nvim')
+            call dein#disable('neocomplete.vim')
+        endif
+        call dein#disable('neobundle.vim')
+        call dein#disable('neopairs.vim')
 
-    call dein#end()
+        call dein#end()
+        call dein#save_state()
 
-    if has('vim_starting')
-        call dein#call_hook('source')
-        call dein#call_hook('post_source')
+        if has('vim_starting')
+            call dein#call_hook('source')
+            call dein#call_hook('post_source')
+        endif
     endif
 " }
 
