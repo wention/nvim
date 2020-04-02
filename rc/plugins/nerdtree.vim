@@ -3,7 +3,7 @@
 " for 'scrooloose/nerdtree'
 
 let NERDTreeShowBookmarks=1
-let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '\.o$', '\.lo$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
 let NERDTreeChDirMode=0
 let NERDTreeQuitOnOpen=0
 let NERDTreeMouseMode=2

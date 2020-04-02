@@ -10,7 +10,7 @@ set completeopt-=preview
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
-      \ deoplete#mappings#manual_complete()
+      \ deoplete#refresh()
 function! s:check_back_space() abort "{{{
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'
@@ -25,7 +25,8 @@ inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
 
 inoremap <expr><C-g> deoplete#undo_completion()
 " <C-l>: redraw candidates
-inoremap <expr><C-l>       deoplete#manual_complete()
+"inoremap <expr><C-l> deoplete#manual_complete()
+inoremap <expr><C-l> deoplete#refresh()
 
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
@@ -68,7 +69,7 @@ let g:deoplete#omni#input_patterns.python = ''
 let g:deoplete#omni#functions = {}
 let g:deoplete#omni#functions.lua = 'xolox#lua#omnifunc'
 
-" inoremap <silent><expr> <C-t> deoplete#mappings#manual_complete('file')
+" inoremap <silent><expr> <C-t> deoplete#manual_complete('file')
 
 let g:deoplete#enable_refresh_always = 1
 let g:deoplete#enable_camel_case = 1
