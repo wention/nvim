@@ -106,10 +106,12 @@
 
         call dein#add('ryanoasis/vim-devicons')
 
-        call dein#add('Shougo/vimshell.vim', {
-                        \ 'on_map': {'n': '<Plug>'},
-                        \ 'hook_add': 'nnoremap <leader>s <Plug>(vimshell_switch)',
-                        \ })
+        call dein#add('lambdalisue/suda.vim')
+        call dein#add('Shougo/vimshell.vim')
+        "call dein#add('Shougo/vimshell.vim', {
+                        "\ 'on_map': {'n': '<Plug>'},
+                        "\ 'hook_add': 'nnoremap <leader>s <Plug>(vimshell_switch)',
+                        "\ })
 
         call dein#add('easymotion/vim-easymotion')
         "call dein#add('myusuf3/numbers.vim')
@@ -198,6 +200,7 @@
         call dein#add('posva/vim-vue', {
                         \ 'on_ft': ['vue'],
                         \ })
+        call dein#add('eismog/vim-dmesg')
 
     " }
 
@@ -388,4 +391,8 @@
 
     " disable Ex mode
     map Q <Nop>
+
+    " 
+    cmap w!! w suda://%
+
 " }
